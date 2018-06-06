@@ -1,14 +1,34 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Project2Blog</title>
+    <title>Blog</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <div class="main-columns columns is-marginless">
+      <aside class="column is-3 menu has-background-light">
+        <div class="menu-label">
+          Website
+        </div>
+        <ul class="menu-list">
+          <li><%= link_to 'About', about_path %></li>
+        </ul>
+        <div class="menu-label">
+          Social
+        </div>
+        <ul class="menu-list">
+          <li><%= link_to 'Twitter', 'https://twitter.com/@nickjnish' %></li>
+          <li><%= link_to 'GitHub', 'https://github.com/nicknish' %></li>
+          <li><%= mail_to 'nickjnish@gmail.com', 'Email' %></li>
+        </ul>
+      </aside>
+
+      <div class="column is-9">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>
