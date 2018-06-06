@@ -1,24 +1,9 @@
-# README
+# Rails Practice 2: Blog
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## User Stories
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- A visitor can see links to social networks, like GitHub, Twitter, and Email.
+- A visitor can view a static about page.
+- An authorized user can create, view, update, and delete a post. (CRUD)
+- A visitor user can view a post.
+- A visitor user can comment and view other comments attached to a post.
