@@ -1,19 +1,65 @@
-<article class="content p-lg">
-  <div class="m-b-md">
-    <h1 class="title is-2 is-marginless">
-      <%= @post.name %>
-    </h1>
-    <span class="subtitle is-7">Posted <%= time_ago_in_words(@post.created_at) %> ago.</span>
+<article class="content p-lg p-b-xl">
+  <div class="m-b-lg">
+    <div class="m-b-md">
+      <h1 class="title is-2 is-marginless">
+        <%= @post.name %>
+      </h1>
+      <span class="subtitle is-7">Posted <%= time_ago_in_words(@post.created_at) %> ago.</span>
+    </div>
+
+    <div class="field is-grouped">
+      <div class="control">
+        <%= link_to 'Edit', edit_post_path(@post), class: 'button' %>
+      </div>
+      <div class="control">
+        <%= link_to 'Delete', @post, class: 'button is-danger', method: :delete %>
+      </div>
+    </div>
+
+    <p><%= @post.body %></p>
   </div>
 
-  <div class="field is-grouped">
-    <div class="control">
-      <%= link_to 'Edit', edit_post_path(@post), class: 'button' %>
-    </div>
-    <div class="control">
-      <%= link_to 'Delete', @post, class: 'button is-danger', method: :delete %>
-    </div>
-  </div>
+  <div>
+    <h3 class="subtitle is-4">
+      <%= "#{@comments.size} #{'Comment'.pluralize(@comments.size)}" %>
+    </h3>
 
-  <p><%= @post.body %></p>
+    <div class="m-b-lg">
+      <% @comments.each do |comment| %>
+        <div class="message is-marginless">
+          <div class="message-body">
+            <p class="is-marginless"><%= comment.body %></p>
+            <span class="subtitle is-7">Posted <%= time_ago_in_words(comment.created_at) %> ago by <%= comment.name %>.</span>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <h4>Add a comment</h4>
+
+    <%= form_for [@post, Comment.new(post: @post)] do |f| %>
+      <div class="field">
+        <%= f.label :name, class: 'label' %>
+        <div class="control">
+          <%= f.text_field :name, class: 'input' %>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :email, class: 'label' %>
+        <div class="control">
+          <%= f.email_field :email, class: 'input' %>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :body, class: 'label' %>
+        <div class="control">
+          <%= f.text_area :body, class: 'input' %>
+        </div>
+      </div>
+
+      <%= f.submit 'Post comment', class: 'button is-primary' %>
+    <% end %>
+  </div>
 </article>
