@@ -1,0 +1,13 @@
+<main class="p-lg">
+  <% @posts.each do |post| %>
+    <article class="content m-b-m">
+      <div class="m-b-sm">
+        <h3 class="title is-3 is-marginless">
+          <%= link_to post.name, post %>
+        </h3>
+        <span class="subtitle is-7">Posted <%= time_ago_in_words(post.created_at) %> ago.</span>
+      </div>
+      <p><%= post.body %></p>
+    </article>
+  <% end %>
+</main>

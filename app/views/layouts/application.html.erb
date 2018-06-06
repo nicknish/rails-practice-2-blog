@@ -14,6 +14,7 @@
           Website
         </div>
         <ul class="menu-list">
+          <li><%= link_to 'Blog', posts_path %></li>
           <li><%= link_to 'About', about_path %></li>
         </ul>
         <div class="menu-label">
@@ -26,7 +27,21 @@
         </ul>
       </aside>
 
-      <div class="column is-9">
+      <div class="column is-9 is-paddingless">
+        <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+          <div class="navbar-menu is-active">
+            <div class="navbar-start">
+              <% if params[:controller] == 'posts' %>
+              <div class="navbar-item">Posts</div>
+              <% else %>
+                <div class="navbar-item">About</div>
+              <% end %>
+            </div>
+            <div class="navbar-end">
+              <%= link_to 'New Post', new_post_path, class: 'navbar-item' %>
+            </div>
+          </div>
+        </nav>
         <%= yield %>
       </div>
     </div>

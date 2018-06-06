@@ -1,0 +1,19 @@
+<article class="content p-lg">
+  <div class="m-b-md">
+    <h1 class="title is-2 is-marginless">
+      <%= @post.name %>
+    </h1>
+    <span class="subtitle is-7">Posted <%= time_ago_in_words(@post.created_at) %> ago.</span>
+  </div>
+
+  <div class="field is-grouped">
+    <div class="control">
+      <%= link_to 'Edit', edit_post_path(@post), class: 'button' %>
+    </div>
+    <div class="control">
+      <%= link_to 'Delete', @post, class: 'button is-danger', method: :delete %>
+    </div>
+  </div>
+
+  <p><%= @post.body %></p>
+</article>
