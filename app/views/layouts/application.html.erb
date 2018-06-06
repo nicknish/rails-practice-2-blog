@@ -45,7 +45,10 @@
               <% end %>
             </div>
             <div class="navbar-end">
-              <%= link_to 'New Post', new_post_path, class: 'navbar-item' %>
+              <% if current_user.present? %>
+                <%= link_to 'New Post', new_post_path, class: 'navbar-item' %>
+                <%= link_to 'Logout', destroy_user_session_path, class: 'navbar-item', method: :delete %>
+              <% end %>
             </div>
           </div>
         </nav>

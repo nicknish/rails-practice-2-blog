@@ -7,14 +7,16 @@
       <span class="subtitle is-7">Posted <%= time_ago_in_words(@post.created_at) %> ago.</span>
     </div>
 
-    <div class="field is-grouped">
-      <div class="control">
-        <%= link_to 'Edit', edit_post_path(@post), class: 'button' %>
+    <% if current_user.present? %>
+      <div class="field is-grouped">
+        <div class="control">
+          <%= link_to 'Edit', edit_post_path(@post), class: 'button' %>
+        </div>
+        <div class="control">
+          <%= link_to 'Delete', @post, class: 'button is-danger', method: :delete %>
+        </div>
       </div>
-      <div class="control">
-        <%= link_to 'Delete', @post, class: 'button is-danger', method: :delete %>
-      </div>
-    </div>
+    <% end %>
 
     <p><%= @post.body %></p>
   </div>
