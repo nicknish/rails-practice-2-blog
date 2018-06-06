@@ -8,6 +8,13 @@
   </head>
 
   <body>
+    <% if flash[:notice].present? || flash[:error].present? || notice.present? || alert.present? %>
+      <div class="notification is-marginless" id="app-notification">
+        <button class="delete"></button>
+        <%= flash[:notice] || flash[:error] || notice || alert %>
+      </div>
+    <% end %>
+
     <div class="main-columns columns is-marginless">
       <aside class="column is-3 menu has-background-light">
         <div class="menu-label">
